@@ -23,18 +23,14 @@ async function getAccessToken(): Promise<string> {
   }
 
   try {
+    const body = new URLSearchParams();
+    body.append('grant_type', 'client_credentials');
+    body.append('client_id', appId);
+    body.append('client_secret', appSecret);
+    
     const response = await axios.post(
       WIX_AUTH_URL,
-      {
-        grant_type: 'client_credentials',
-        client_id: appId,
-        client_secret: appSecret,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      }
+      body
     );
 
     const { access_token, expires_in } = response.data;
