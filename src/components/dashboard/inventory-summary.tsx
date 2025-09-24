@@ -1,19 +1,13 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Package, Warehouse, Globe } from "lucide-react";
+import { formatCurrency } from "@/lib/utils";
 
 type InventorySummaryProps = {
     totalWarehouseStock: number;
     totalWixStock: number;
     totalWarehouseValue: number;
     totalWixValue: number;
-}
-
-const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    }).format(amount);
 }
 
 export function InventorySummary({

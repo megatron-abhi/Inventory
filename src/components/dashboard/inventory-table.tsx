@@ -18,13 +18,7 @@ import { Pencil, Save, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import type { Product } from '@/lib/types';
 import { DiscrepancyPopover } from './discrepancy-popover';
-
-const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    }).format(amount);
-}
+import { formatCurrency } from '@/lib/utils';
 
 export function InventoryTable({ initialProducts }: { initialProducts: Product[] }) {
   const [products, setProducts] = useState<Product[]>(initialProducts);
