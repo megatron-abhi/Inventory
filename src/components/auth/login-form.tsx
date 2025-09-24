@@ -34,6 +34,7 @@ export function LoginForm() {
           placeholder="admin@stockwatch.com"
           required
           suppressHydrationWarning
+          defaultValue="abhilashn8080@gmail.com"
         />
       </div>
       <div className="space-y-2">
@@ -44,6 +45,7 @@ export function LoginForm() {
           type="password" 
           required 
           suppressHydrationWarning
+          defaultValue="admin@123"
         />
       </div>
       {state?.error && (
