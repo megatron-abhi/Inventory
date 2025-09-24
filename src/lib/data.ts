@@ -1,7 +1,8 @@
 
 import type { Product } from './types';
+import { getWixProducts } from './wix-service';
 
-const products: Product[] = [
+const mockProducts: Product[] = [
   {
     id: 'prod_001',
     name: 'Classic White Tee',
@@ -49,8 +50,37 @@ const products: Product[] = [
   },
 ];
 
+let productsCache: Product[] | null = null;
+const WAREHOUSE_STOCK_MOCK: Record<string, number> = {
+    'SKU-CW-TEE-M': 50,
+    'SKU-DB-JEA-32': 25,
+    'SKU-SB-HOO-L': 20,
+    'SKU-CB-CAP-OS': 30,
+    'SKU-LE-BELT-34': 45,
+};
+
+
 export async function getProducts(): Promise<Product[]> {
-  // Simulate network delay
-  await new Promise(resolve => setTimeout(resolve, 500));
-  return products;
+  if (process.env.WIX_APP_ID && process.env.WIX_APP_SECRET) {
+      if (productsCache) {
+          return productsCache;
+      }
+      try {
+          const wixProducts = await getWixProducts();
+          
+          productsCache = wixProducts.map(p => ({
+              ...p,
+              // Since warehouse stock is not in Wix, we use a mock value for demonstration
+              // In a real app, this would come from a database or another system
+              warehouseStock: WAREHOUSE_STOCK_MOCK[p.sku] ?? p.wixStock 
+          }));
+
+          return productsCache;
+      } catch (error) {
+          console.error("Failed to fetch from Wix, falling back to mock data.", error);
+          return mockProducts;
+      }
+  } else {
+    return mockProducts;
+  }
 }
