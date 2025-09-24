@@ -13,8 +13,13 @@ const loginSchema = z.object({
 });
 
 export async function login(prevState: { error: string } | null, formData: FormData) {
-  try {
-    const { email, password } = loginSchema.parse(Object.fromEntries(formData.entries()));
+    const parsed = loginSchema.safeParse(Object.fromEntries(formData.entries()));
+
+    if (!parsed.success) {
+      return { error: parsed.error.errors.map((err) => err.message).join(', ') };
+    }
+    
+    const { email, password } = parsed.data;
 
     // Mock authentication
     if (email === 'abhilashn8080@gmail.com' && password === 'admin@123') {
@@ -28,12 +33,6 @@ export async function login(prevState: { error: string } | null, formData: FormD
     } else {
       return { error: 'Invalid email or password.' };
     }
-  } catch (e) {
-    if (e instanceof z.ZodError) {
-      return { error: e.errors.map((err) => err.message).join(', ') };
-    }
-    return { error: 'An unexpected error occurred.' };
-  }
 }
 
 export async function logout() {
