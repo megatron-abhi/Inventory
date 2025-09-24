@@ -61,7 +61,11 @@ const WAREHOUSE_STOCK_MOCK: Record<string, number> = {
 
 
 export async function getProducts(): Promise<Product[]> {
-  if (process.env.WIX_APP_ID && process.env.WIX_APP_SECRET) {
+  const appId = process.env.WIX_APP_ID;
+  const appSecret = process.env.WIX_APP_SECRET;
+
+  // Check if credentials are set and are not the placeholder values
+  if (appId && appSecret && appId !== 'YOUR_APP_ID' && appSecret !== 'YOUR_APP_SECRET') {
       if (productsCache) {
           return productsCache;
       }
@@ -78,9 +82,11 @@ export async function getProducts(): Promise<Product[]> {
           return productsCache;
       } catch (error) {
           console.error("Failed to fetch from Wix, falling back to mock data.", error);
+          // Fallback to mock data on API error
           return mockProducts;
       }
   } else {
+    // Use mock data if credentials are not configured
     return mockProducts;
   }
 }
