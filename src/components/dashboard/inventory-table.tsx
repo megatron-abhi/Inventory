@@ -14,11 +14,10 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Pencil, Save, X, ShoppingBag } from 'lucide-react';
+import { Pencil, Save, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import type { Product } from '@/lib/types';
 import { DiscrepancyPopover } from './discrepancy-popover';
-import { Header } from './header';
 
 const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -55,34 +54,7 @@ export function InventoryTable({ initialProducts }: { initialProducts: Product[]
     });
   };
 
-  const handleSimulatePurchase = () => {
-    const availableProducts = products.filter((p) => p.wixStock > 0);
-    if (availableProducts.length === 0) {
-      toast({
-        variant: 'destructive',
-        title: 'Out of Stock',
-        description: 'All products are out of stock on Wix.',
-      });
-      return;
-    }
-    const randomProductIndex = Math.floor(Math.random() * availableProducts.length);
-    const productToUpdate = availableProducts[randomProductIndex];
-
-    setProducts(
-      products.map((p) =>
-        p.id === productToUpdate.id ? { ...p, wixStock: p.wixStock - 1 } : p
-      )
-    );
-
-    toast({
-      title: 'Purchase Simulated',
-      description: `One unit of "${productToUpdate.name}" was "purchased" on Wix.`,
-    });
-  };
-
   return (
-    <>
-    <Header onSimulatePurchase={handleSimulatePurchase}/>
     <div className="overflow-x-auto">
       <Table>
         <TableHeader>
@@ -163,6 +135,5 @@ export function InventoryTable({ initialProducts }: { initialProducts: Product[]
         </TableBody>
       </Table>
     </div>
-    </>
   );
 }
