@@ -7,8 +7,6 @@ import { login } from '@/app/actions';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { useEffect, useState } from 'react';
-import { useToast } from '@/hooks/use-toast';
 import { AlertCircle, Loader2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
@@ -24,21 +22,6 @@ function SubmitButton() {
 
 export function LoginForm() {
   const [state, formAction] = useActionState(login, null);
-  const { toast } = useToast();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  useEffect(() => {
-    setEmail('abhilashn8080@gmail.com');
-    setPassword('admin@123');
-  }, []);
-
-  useEffect(() => {
-    if (state?.error) {
-        // The toast is a better UX than an alert for this.
-        // It's less layout-disruptive.
-    }
-  }, [state, toast]);
 
   return (
     <form action={formAction} className="space-y-4">
@@ -50,8 +33,6 @@ export function LoginForm() {
           type="email"
           placeholder="admin@stockwatch.com"
           required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div className="space-y-2">
@@ -61,8 +42,6 @@ export function LoginForm() {
           name="password" 
           type="password" 
           required 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
       {state?.error && (
