@@ -20,6 +20,13 @@ import type { Product } from '@/lib/types';
 import { DiscrepancyPopover } from './discrepancy-popover';
 import { Header } from './header';
 
+const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    }).format(amount);
+}
+
 export function InventoryTable({ initialProducts }: { initialProducts: Product[] }) {
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [editingProductId, setEditingProductId] = useState<string | null>(null);
@@ -82,6 +89,7 @@ export function InventoryTable({ initialProducts }: { initialProducts: Product[]
           <TableRow>
             <TableHead className="w-[80px]">Image</TableHead>
             <TableHead>Product</TableHead>
+            <TableHead className="text-right">Price</TableHead>
             <TableHead className="text-right">Wix Stock</TableHead>
             <TableHead className="text-right">Warehouse Stock</TableHead>
             <TableHead className="text-right">Difference</TableHead>
@@ -108,6 +116,7 @@ export function InventoryTable({ initialProducts }: { initialProducts: Product[]
                   <div className="font-bold">{product.name}</div>
                   <div className="text-sm text-muted-foreground">{product.sku}</div>
                 </TableCell>
+                <TableCell className="text-right">{formatCurrency(product.price)}</TableCell>
                 <TableCell className="text-right">{product.wixStock}</TableCell>
                 <TableCell className="text-right">
                   {isEditing ? (

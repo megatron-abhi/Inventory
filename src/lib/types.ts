@@ -6,4 +6,5 @@ export type Product = {
   wixStock: number;
   warehouseStock: number;
   image: string;
+  price: number;
 };

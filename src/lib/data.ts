@@ -9,6 +9,7 @@ const products: Product[] = [
     wixStock: 48,
     warehouseStock: 50,
     image: 'https://picsum.photos/seed/swp1/100/100',
+    price: 24.99,
   },
   {
     id: 'prod_002',
@@ -17,6 +18,7 @@ const products: Product[] = [
     wixStock: 25,
     warehouseStock: 25,
     image: 'https://picsum.photos/seed/swp2/100/100',
+    price: 89.99,
   },
   {
     id: 'prod_003',
@@ -25,6 +27,7 @@ const products: Product[] = [
     wixStock: 15,
     warehouseStock: 20,
     image: 'https://picsum.photos/seed/swp3/100/100',
+    price: 59.99,
   },
   {
     id: 'prod_004',
@@ -33,6 +36,7 @@ const products: Product[] = [
     wixStock: 30,
     warehouseStock: 30,
     image: 'https://picsum.photos/seed/swp4/100/100',
+    price: 19.99,
   },
    {
     id: 'prod_005',
@@ -41,6 +45,7 @@ const products: Product[] = [
     wixStock: 39,
     warehouseStock: 45,
     image: 'https://picsum.photos/seed/swp5/100/100',
+    price: 34.99,
   },
 ];
 
