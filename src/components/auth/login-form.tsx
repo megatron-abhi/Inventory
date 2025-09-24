@@ -13,7 +13,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" className="w-full" disabled={pending}>
+    <Button type="submit" className="w-full" disabled={pending} suppressHydrationWarning>
       {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
       Login
     </Button>
@@ -33,6 +33,7 @@ export function LoginForm() {
           type="email"
           placeholder="admin@stockwatch.com"
           required
+          suppressHydrationWarning
         />
       </div>
       <div className="space-y-2">
@@ -42,6 +43,7 @@ export function LoginForm() {
           name="password" 
           type="password" 
           required 
+          suppressHydrationWarning
         />
       </div>
       {state?.error && (
