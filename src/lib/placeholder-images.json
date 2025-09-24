@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "product-1",
+      "description": "A plain white t-shirt on a hanger",
+      "imageUrl": "https://images.unsplash.com/photo-1660578008905-162a1a46f21b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3aGl0ZSUyMHQtc2hpcnR8ZW58MHx8fHwxNzU4Njg3NTIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "white t-shirt"
+    },
+    {
+      "id": "product-2",
+      "description": "A pair of classic blue jeans",
+      "imageUrl": "https://images.unsplash.com/photo-1714143136385-c449be6760f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxibHVlJTIwamVhbnN8ZW58MHx8fHwxNzU4NzIyODgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "blue jeans"
+    },
+    {
+      "id": "product-3",
+      "description": "A stylish black hoodie",
+      "imageUrl": "https://images.unsplash.com/photo-1614214191247-5b2d3a734f1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxibGFjayUyMGhvb2RpZXxlbnwwfHx8fDE3NTg3MzA0NjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "black hoodie"
+    },
+    {
+      "id": "product-4",
+      "description": "A red baseball cap",
+      "imageUrl": "https://images.unsplash.com/photo-1720423738890-37689a6f6b95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cmVkJTIwY2FwfGVufDB8fHx8MTc1ODczMDQ2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "red cap"
+    }
+  ]
 }
