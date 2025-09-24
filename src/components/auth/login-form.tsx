@@ -42,12 +42,12 @@ export function LoginForm() {
           type="email"
           placeholder="admin@stockwatch.com"
           required
-          defaultValue="admin@stockwatch.com"
+          defaultValue="abhilashn8080@gmail.com"
         />
       </div>
       <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
-        <Input id="password" name="password" type="password" required defaultValue="password" />
+        <Input id="password" name="password" type="password" required defaultValue="admin@123" />
       </div>
       {state?.error && (
         <Alert variant="destructive">

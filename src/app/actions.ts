@@ -17,7 +17,7 @@ export async function login(prevState: { error: string } | null, formData: FormD
     const { email, password } = loginSchema.parse(Object.fromEntries(formData.entries()));
 
     // Mock authentication
-    if (email === 'admin@stockwatch.com' && password === 'password') {
+    if (email === 'abhilashn8080@gmail.com' && password === 'admin@123') {
       cookies().set('session', 'admin', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
