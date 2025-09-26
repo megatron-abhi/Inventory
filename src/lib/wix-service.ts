@@ -30,7 +30,12 @@ async function getAccessToken(): Promise<string> {
     
     const response = await axios.post(
       WIX_AUTH_URL,
-      body
+      body,
+      {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
     );
 
     const { access_token, expires_in } = response.data;
