@@ -18,14 +18,16 @@ async function getAccessToken(): Promise<string> {
   const appId = process.env.WIX_APP_ID;
   const appSecret = process.env.WIX_APP_SECRET;
 
-  if (!appId || !appSecret) {
+  if (!appId || !appSecret || appId === "YOUR_APP_ID") {
     throw new Error('Wix API credentials are not configured in .env file.');
   }
 
   try {
-    // Manually construct the URL-encoded string body
-    const body = `grant_type=client_credentials&client_id=${appId}&client_secret=${appSecret}`;
-    
+    const body = new URLSearchParams();
+    body.append('grant_type', 'client_credentials');
+    body.append('client_id', appId);
+    body.append('client_secret', appSecret);
+
     const response = await axios.post(
       WIX_AUTH_URL,
       body,
